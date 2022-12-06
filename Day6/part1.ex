@@ -1,0 +1,7 @@
+File.read!('./input.txt')
+|> to_charlist()
+|> Enum.chunk_every(4, 1)
+|> Enum.with_index(&{&1, &2 + 4})
+|> Enum.drop_while(&(&1 |> elem(0) |> Enum.uniq() |> length() < 4))
+|> List.first()
+|> IO.inspect()
